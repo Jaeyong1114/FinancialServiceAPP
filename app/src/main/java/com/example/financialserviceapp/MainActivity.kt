@@ -1,5 +1,6 @@
 package com.example.financialserviceapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.financialserviceapp.databinding.ActivityMainBinding
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun openShuffle(){
+        startActivity(Intent(this,PinActivity::class.java))
 
     }
 
