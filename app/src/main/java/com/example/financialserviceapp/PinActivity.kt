@@ -16,7 +16,7 @@ class PinActivity : AppCompatActivity(), ShuffleNumberKeypad.KeyPadListener {
         binding = ActivityPinBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.viewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this //라이브 데이터 사용하기위해
 
         binding.shuffleKeyPad.setKeyPadListener(this)
     }

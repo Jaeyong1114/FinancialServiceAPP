@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.children
 import com.example.financialserviceapp.databinding.WidgetShuffleNumberKeypadBinding
 import java.util.ArrayList
@@ -13,7 +14,7 @@ import kotlin.random.Random
 
 class ShuffleNumberKeypad @JvmOverloads
 constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0) :
-    GridLayout(context, attrs, defStyleAttr), View.OnClickListener {
+    GridLayout(context,attrs,defStyleAttr), View.OnClickListener {
     //공통으로 처리할예정이라 클래스 윗부분에 onclicklistener
 
 
@@ -26,13 +27,13 @@ private var _binding: WidgetShuffleNumberKeypadBinding? = null
     init {
         _binding =
             WidgetShuffleNumberKeypadBinding.inflate(LayoutInflater.from(context), this, true)
-        binding.view = this
-        binding.clickListener=this //데이터바인딩 위해 연결
+        binding.view = this //데이터 바인딩
+        binding.clickListener=this //데이터 바인딩
         shuffle()
     }
 
 
-    override fun onDetachedFromWindow() {
+    override fun onDetachedFromWindow() { //뷰가 끝날때 바인딩 참조 끊어줘야함
         super.onDetachedFromWindow()
         _binding = null
     }
@@ -45,8 +46,8 @@ private var _binding: WidgetShuffleNumberKeypadBinding? = null
         binding.gridLayout.children.forEach { view ->
             if (view is TextView && view.tag != null) {
                 val randIndex = Random.nextInt(keyNumberArray.size)
-                view.text = keyNumberArray[randIndex]
-                keyNumberArray.removeAt(randIndex)
+                view.text = keyNumberArray[randIndex] //랜덤으로 바꾸고 텍스트뷰에 넣음
+                keyNumberArray.removeAt(randIndex) // 넣고 지워야 중복 발생 X
 
             }
         }
@@ -62,7 +63,7 @@ private var _binding: WidgetShuffleNumberKeypadBinding? = null
         listener?.onClickDone()
     }
 
-    interface KeyPadListener{//외부에서 위에 코드를 호출 할 수 있게 interface 작성
+    interface KeyPadListener{//외부에서 메서드를 호출 할 수 있게 interface 작성
         fun onClickNum(num: String)
         fun onClickDelete()
         fun onClickDone()

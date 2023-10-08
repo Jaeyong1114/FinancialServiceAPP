@@ -1,5 +1,7 @@
 package com.example.financialserviceapp
 
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,6 +16,7 @@ class PinViewModel: ViewModel() {
         if(password.length < 6){
             password.append(num)
             _passwordLiveData.value = password.toString()
+            Log.e("PinViewModel","패스워드:${password},라이브데이터:${passwordLiveData},_라이브데이터:${_passwordLiveData.value}")
         }
     }
 

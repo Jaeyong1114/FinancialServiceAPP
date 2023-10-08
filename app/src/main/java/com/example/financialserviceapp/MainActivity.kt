@@ -11,7 +11,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply{
             setContentView(root)
-            view=this@MainActivity
+            view=this@MainActivity //데이터바인딩을 위해 연결
         }
 
 

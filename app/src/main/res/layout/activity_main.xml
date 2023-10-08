@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:paddingEnd="56dp"
             android:paddingStart="56dp"
-            android:onClick="@{()-> view.openShuffle()}"
+            android:onClick="@{()->view.openShuffle()}"
             android:text="보안 키패드"/>
         <Button
             android:layout_width="wrap_content"
