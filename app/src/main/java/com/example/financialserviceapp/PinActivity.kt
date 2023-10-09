@@ -1,6 +1,7 @@
 package com.example.financialserviceapp
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.financialserviceapp.databinding.ActivityPinBinding
@@ -19,6 +20,10 @@ class PinActivity : AppCompatActivity(), ShuffleNumberKeypad.KeyPadListener {
         binding.lifecycleOwner = this //라이브 데이터 사용하기위해
 
         binding.shuffleKeyPad.setKeyPadListener(this)
+
+        viewModel.messageLiveData.observe(this){
+            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onClickNum(num: String) {
